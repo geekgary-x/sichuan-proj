@@ -5,6 +5,8 @@ import SideBar from "./components/SideBar";
 import Viewport from "./components/Viewport";
 
 import "./styles/main.css"
+import "cesium/Widgets/widgets.css";
+
 function App() {
       return (
           <main>
@@ -12,7 +14,7 @@ function App() {
                 direction="horizontal" 
                 className="split">
                   <SideBar className="sideBar"></SideBar>
-                  <Viewport></Viewport>
+                  <Viewport className="viewport"></Viewport>
               </Split>
           </main>
       );  

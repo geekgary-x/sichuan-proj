@@ -10,13 +10,13 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, '../src/App.js'),
+        main: path.resolve(__dirname, './src/App.js'),
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../dist')
+        path: path.resolve(__dirname, './dist')
     },
-
+    mode: 'development',
     amd: {
         // Enable webpack-friendly use of require in Cesium
         toUrlUndefined: true
@@ -30,11 +30,11 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/tample.html')
+            template: path.resolve(__dirname, './src/tample.html')
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: path.resolve(__dirname, '../static') },
+                { from: path.resolve(__dirname, './static') },
                 { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
                 { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                 { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' }
@@ -47,7 +47,7 @@ module.exports = {
     ],
 
     devServer: {
-        static:'../static'
+        static:'./static'
     },
 
     module: {
