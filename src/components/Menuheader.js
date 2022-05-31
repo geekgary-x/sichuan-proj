@@ -19,7 +19,7 @@ export default function MenuHeader() {
                 <MenuItem>Add Label</MenuItem>
             </Menu>
             <Menu className="MenuHeader" menuButton={<MenuButton className="menubutton">View</MenuButton>} transition>
-                <MenuItem>Add Label</MenuItem>
+                <MenuItem>Focus</MenuItem>
             </Menu>
             <Menu className="MenuHeader" menuButton={<MenuButton className="menubutton">Help</MenuButton>} transition>
                 <MenuItem>Document</MenuItem>

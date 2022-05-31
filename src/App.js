@@ -18,7 +18,7 @@ function App() {
       return (
           <main>
               <MenuHeader></MenuHeader>
-               <Split sizes={[30, 70]} 
+               <Split sizes={[20, 80]} 
                 direction="horizontal" 
                 className="split">
                   <SideBar className="sideBar"></SideBar>
