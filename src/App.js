@@ -1,16 +1,19 @@
 import React from "react";
 import { createRoot } from 'react-dom/client';
-import Navbar from "./components/Navbar";
-
-
+import Split from "react-split"
 import "./styles/main.css"
 
 
 function App() {
       return (
-          <app>
-              <Navbar></Navbar>
-          </app>
+          <main>
+               <Split sizes={[30, 70]} 
+                direction="horizontal" 
+                className="split">
+                  <div className="sideBar">aaa1</div>
+                  <div>aaa3</div>
+              </Split>
+          </main>
       );  
 }
 
