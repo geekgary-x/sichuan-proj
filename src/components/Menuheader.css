@@ -1,0 +1,16 @@
+.site-header {
+    background-color: #b6d1da;
+    height: 30px;
+    padding-left: 20px;
+}
+
+.menubutton {
+    height: 100%;
+    border-top: none;
+    border-bottom: none;
+    background-color: #b6d1da;
+}
+
+.menubutton:hover {
+    background-color: #96b2bc;
+}
