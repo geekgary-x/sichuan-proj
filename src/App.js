@@ -3,15 +3,21 @@ import { createRoot } from 'react-dom/client';
 import Split from "react-split"
 import SideBar from "./components/SideBar";
 import Viewport from "./components/Viewport";
-import Example from "./components/Menuheader";
+import MenuHeader from "./components/Menuheader";
 
 import "./styles/main.css"
 import "cesium/Widgets/widgets.css";
 
 function App() {
+
+    function handleClick(i)
+    {
+        console.log(i);
+    }
+
       return (
           <main>
-              <Example></Example>
+              <MenuHeader></MenuHeader>
                <Split sizes={[30, 70]} 
                 direction="horizontal" 
                 className="split">
