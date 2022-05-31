@@ -1,0 +1,40 @@
+.example {
+}
+
+.component {
+    border-radius: 5px;
+    margin-top: 0px;
+    height: 100vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.item {
+    background: linear-gradient(#fff, #eee);
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.axis-x .item {
+    display: inline-block;
+    line-height: 300px;
+    padding: 0;
+    text-align: center;
+    width: 150px;
+}
+
+.axis-x .component {
+    white-space: nowrap;
+}
+
+.square-item {
+    background: linear-gradient(#fff, #eee);
+    display: inline-block;
+    line-height: 100px;
+    text-align: center;
+    width: 100px;
+}
+
+.even {
+    background: linear-gradient(#ddd, #ccc);
+}

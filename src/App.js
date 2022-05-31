@@ -4,6 +4,7 @@ import Split from "react-split"
 import SideBar from "./components/SideBar";
 import Viewport from "./components/Viewport";
 import MenuHeader from "./components/Menuheader";
+import Examples from "./components/DataList"
 
 import "./styles/main.css"
 import "cesium/Widgets/widgets.css";
@@ -21,7 +22,8 @@ function App() {
                <Split sizes={[20, 80]} 
                 direction="horizontal" 
                 className="split">
-                  <SideBar className="sideBar"></SideBar>
+                    <Examples></Examples>
+                  {/* <SideBar className="sideBar"></SideBar> */}
                   <Viewport className="viewport"></Viewport>
               </Split>
           </main>
