@@ -1,6 +1,7 @@
 import React from "react";
 import { Ion, Viewer, createWorldTerrain, createOsmBuildings, Cartesian3, Math } from "cesium";
 export default function Viewport() {
+    console.log("ttt");
     React.useEffect(() => {
         const viewer = new Viewer('cesiumContainer', {
             terrainProvider: createWorldTerrain(),
