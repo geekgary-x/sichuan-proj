@@ -10,10 +10,11 @@ export default function DataList(props) {
         <div
             key={key}
             className={'item' + (index % 2 ? '' : ' even')}
-            style={{ lineHeight: `${getHeight(index)}px` }}
+            style={{ lineHeight: `100px` }}
             onClick={() => props.handleClick(key)}
         >
-            {props.data[key].model}
+            <img src={props.data[key].img} className="listimg"></img>
+            <div className='listname'> {props.data[key].name} </div>
         </div>
     );
     

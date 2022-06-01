@@ -13,7 +13,14 @@
     background: linear-gradient(#fff, #eee);
     line-height: 30px;
     padding: 0 10px;
+    display: flex;
+    flex-direction: row;
 }
+
+.item:hover {
+    cursor: pointer;
+}
+
 
 .axis-x .item {
     display: inline-block;
@@ -37,4 +44,18 @@
 
 .even {
     background: linear-gradient(#ddd, #ccc);
+}
+
+.listimg {
+    margin-top: 10px;
+    height: 90px;
+    width: 90px;
+    margin-bottom: 10px;
+}
+
+.listname {
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    margin-left: 20px;
 }
