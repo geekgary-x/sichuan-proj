@@ -11,12 +11,14 @@ import "cesium/Widgets/widgets.css";
 import { mode } from "cesium";
 
 function App() {
+
+    // model
     const [on, setOn] = React.useState(0);
     const lightSwitch = (i) => setOn(on => i);
 
     const [model, setModel] = React.useState("/SampleData/Cesium3DTiles/Batched/BatchedColors/tileset.json");
 
-
+    // control
     function handleClick(i) {
         setModel("/SampleData/Cesium3DTiles/Hierarchy/BatchTableHierarchy/tileset.json");
         console.log(model);
@@ -33,6 +35,8 @@ function App() {
 
     console.log("rrr");
 
+
+    // view
     return (
         <main>
             <MenuHeader></MenuHeader>
