@@ -72,6 +72,14 @@ module.exports = {
                     ]
             },
             {
+                test: /\.data$/,
+                exclude: /node_modules/,
+                use:
+                    [
+                        'raw-loader'
+                    ]
+            },
+            {
                 test: /\.css$/,
                 use:
                     [
