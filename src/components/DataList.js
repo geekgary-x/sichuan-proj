@@ -11,27 +11,29 @@ export default function DataList(props) {
             key={key}
             className={'item' + (index % 2 ? '' : ' even')}
             style={{ lineHeight: `${getHeight(index)}px` }}
-            onClick={()=>props.handleClick(key)}
+            onClick={() => props.handleClick(key)}
         >
-            {index}
+            {props.data[key].model}
         </div>
     );
-
+    
     const examples = [
         {
-            length: 10000,
+            length: props.data.length,
             itemRenderer: renderVariableHeightItem
         },
     ];
 
     function renderExamples() {
-        return examples.map((props, key) => (
-            <div key={key} className={`example axis-${props.axis}`}>
-                <div className='component'>
-                    <ReactList {...props} />
+        return examples.map((props, key) => {
+            return (
+                <div key={key} className={`example axis-${props.axis}`}>
+                    <div className='component'>
+                        <ReactList {...props} />
+                    </div>
                 </div>
-            </div>
-        ));
+            )
+        });
     }
 
     return (

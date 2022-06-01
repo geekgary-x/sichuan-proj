@@ -8,6 +8,9 @@ import DataList from "./components/DataList"
 
 import "./styles/main.css"
 import "cesium/Widgets/widgets.css";
+import listdata from "./model/listdata";
+
+
 import { mode } from "cesium";
 
 function App() {
@@ -16,34 +19,34 @@ function App() {
     const [on, setOn] = React.useState(0);
     const lightSwitch = (i) => setOn(on => i);
 
-    const [model, setModel] = React.useState("/SampleData/Cesium3DTiles/Batched/BatchedColors/tileset.json");
+    const [model, setModel] = React.useState([
+        "/SampleData/Cesium3DTiles/Batched/BatchedColors/tileset.json",
+    ]);
 
     // control
     function handleClick(i) {
-        setModel("/SampleData/Cesium3DTiles/Hierarchy/BatchTableHierarchy/tileset.json");
+        console.log(`car ${i} click!`);
+        setModel(listdata[i].model);
         console.log(model);
         lightSwitch(i);
-        console.log(i);
     }
 
+    
+    // view
     function renderViewport()
     {
-        console.log("viewport");
+        console.log("viewport render");
         console.log(model);
         return  <Viewport className="viewport" tttt={on} model={model}></Viewport>
     }
 
-    console.log("rrr");
-
-
-    // view
     return (
         <main>
             <MenuHeader></MenuHeader>
             <Split sizes={[20, 80]}
                 direction="horizontal"
                 className="split">
-                <DataList handleClick={key=>{handleClick(key)}}></DataList>
+                <DataList handleClick={key=>{handleClick(key)}} data={listdata}></DataList>
                 {renderViewport()}
             </Split>
         </main>
