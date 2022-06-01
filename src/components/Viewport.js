@@ -1,8 +1,14 @@
 import React from "react";
-import { Ion, Viewer, createWorldTerrain, createOsmBuildings, Cartesian3, Math } from "cesium";
-export default function Viewport() {
+import { Ion, Viewer, createWorldTerrain, createOsmBuildings, Cartesian3, Math, HeadingPitchRange, Cesium3DTileset } from "cesium";
+export default function Viewport(props) {
+    const [state, setstate] = React.useState({
+        model: ""
+    })
+
     console.log("ttt");
     React.useEffect(() => {
+        document.getElementById("cesiumContainer").innerHTML = "";
+        console.log("eee");
         const viewer = new Viewer('cesiumContainer', {
             terrainProvider: createWorldTerrain(),
             geocoder: false, //搜索框
@@ -18,7 +24,20 @@ export default function Viewport() {
             infoBox: true, //信息面板
         });
         viewer._cesiumWidget._creditContainer.style.display = "none";
-    }, [0]);
+
+        let tileset_url = props.model;
+
+        let tileset = new Cesium3DTileset({ url: tileset_url });
+
+        tileset.readyPromise.then(function (tileset) {
+
+            viewer.scene.primitives.add(tileset);
+
+            let default_HeadingPitchRane = new HeadingPitchRange(0.0, -0.5, tileset.boundingSphere.radius * 2.0);
+
+            viewer.zoomTo(tileset, default_HeadingPitchRane);
+        });
+    }, [props]);
     return (
         <div className="viewport">
             <div id="cesiumContainer"></div>
