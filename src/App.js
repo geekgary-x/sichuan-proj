@@ -20,8 +20,14 @@ function App() {
     const lightSwitch = (i) => setOn(on => i);
 
     const [model, setModel] = React.useState([
-        "/SampleData/Cesium3DTiles/Batched/BatchedColors/tileset.json",
+        "",
     ]);
+
+    const [headerState, setheaderState] = React.useState(
+        {
+            focus: true
+        }
+    );
 
     // control
     function handleClick(i) {
@@ -31,7 +37,21 @@ function App() {
         lightSwitch(i);
     }
 
-    
+    function handleClickHeader(event) {
+        console.log(event.syntheticEvent.target.innerHTML);
+        if(event.syntheticEvent.target.innerHTML == "Focus")
+        {
+            console.log("Focus click");
+        }
+        setheaderState(headerState => {
+            return {
+                ... headerState,
+                focus: true
+            }
+        })
+    }
+
+    console.log("asdasdasd");
     // view
     function renderViewport()
     {
@@ -42,7 +62,7 @@ function App() {
 
     return (
         <main>
-            <MenuHeader></MenuHeader>
+            <MenuHeader handleclickHeader={handleClickHeader}></MenuHeader>
             <Split sizes={[20, 80]}
                 direction="horizontal"
                 className="split">

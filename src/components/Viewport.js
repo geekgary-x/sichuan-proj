@@ -2,14 +2,29 @@ import React from "react";
 import { Ion, Viewer, createWorldTerrain, createOsmBuildings, Cartesian3, Math, HeadingPitchRange, Cesium3DTileset } from "cesium";
 export default function Viewport(props) {
     const [state, setstate] = React.useState({
-        model: ""
+        model: "",
+        focus: false,
+        first: true,
+        viewer: undefined,
+        tileset: undefined, 
+        default_HeadingPitchRane: undefined,
     })
 
     console.log("ttt");
+
+    if(props.focus) {
+        console.log("focues");
+    }
+
     React.useEffect(() => {
+        if(props.model==state.model && !state.first) {
+            console.log("zoom");
+            state.viewer.zoomTo(state.tileset, state.default_HeadingPitchRane);
+            return;
+        };
         document.getElementById("cesiumContainer").innerHTML = "";
         console.log("eee");
-        const viewer = new Viewer('cesiumContainer', {
+        let viewer = new Viewer('cesiumContainer', {
             terrainProvider: createWorldTerrain(),
             geocoder: false, //搜索框
             homeButton: false, //home按钮
@@ -25,18 +40,26 @@ export default function Viewport(props) {
         });
         viewer._cesiumWidget._creditContainer.style.display = "none";
 
+        if(props.model == "") return;
         let tileset_url = props.model;
-
         let tileset = new Cesium3DTileset({ url: tileset_url });
-
+        let default_HeadingPitchRane
         tileset.readyPromise.then(function (tileset) {
 
             viewer.scene.primitives.add(tileset);
 
-            let default_HeadingPitchRane = new HeadingPitchRange(0.0, -0.5, tileset.boundingSphere.radius * 2.0);
+            default_HeadingPitchRane = new HeadingPitchRange(0.0, -0.5, tileset.boundingSphere.radius * 2.0);
 
             viewer.zoomTo(tileset, default_HeadingPitchRane);
         });
+        setstate({
+            ... state,
+            model: props.model,
+            first: false,
+            viewer: viewer,
+            tileset: tileset, 
+            default_HeadingPitchRane: default_HeadingPitchRane,
+        })
     }, [props]);
     return (
         <div className="viewport">

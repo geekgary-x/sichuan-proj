@@ -7,7 +7,7 @@ import {
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import './Menuheader.css'
-export default function MenuHeader() {
+export default function MenuHeader(props) {
     return (
         <header className="site-header">
             <Menu className="MenuHeader" menuButton={<MenuButton className="menubutton">File</MenuButton>} transition>
@@ -19,14 +19,13 @@ export default function MenuHeader() {
                 <MenuItem>Add Label</MenuItem>
             </Menu>
             <Menu className="MenuHeader" menuButton={<MenuButton className="menubutton">View</MenuButton>} transition>
-                <MenuItem>Focus</MenuItem>
+                <MenuItem onClick={props.handleclickHeader}>Focus</MenuItem>
             </Menu>
             <Menu className="MenuHeader" menuButton={<MenuButton className="menubutton">Help</MenuButton>} transition>
                 <MenuItem>Document</MenuItem>
             </Menu>
             <Menu className="MenuHeader" menuButton={<MenuButton className="menubutton">About</MenuButton>} transition>
-                <MenuItem>Cesium</MenuItem>
-                <MenuItem>React</MenuItem>
+                <MenuItem>About</MenuItem>
             </Menu>
         </header>
     );
