@@ -22,6 +22,7 @@ export default function Viewport(props) {
             state.viewer.zoomTo(state.tileset, state.default_HeadingPitchRane);
             return;
         };
+        Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzYmFjZGI5Ny0yM2RjLTRlZWUtYWVkMS1lODI0N2FiZjVlNTIiLCJpZCI6ODgxMDQsImlhdCI6MTY0ODg5ODM3Nn0.xbWbDzDLSjZNUgNTiV-ncvBRecBaYBiEM8SE6cC16kI';
         document.getElementById("cesiumContainer").innerHTML = "";
         console.log("eee");
         let viewer = new Viewer('cesiumContainer', {
@@ -39,7 +40,6 @@ export default function Viewport(props) {
             infoBox: true, //信息面板
         });
         viewer._cesiumWidget._creditContainer.style.display = "none";
-
         if(props.model == "") return;
         let tileset_url = props.model;
         let tileset = new Cesium3DTileset({ url: tileset_url });
